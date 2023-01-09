@@ -39,3 +39,8 @@ CREATE TABLE movie (
 	silent Boolen,
 	published_date DATE
 );
+
+CREATE TABLE source (
+	id BIGSERIAL PRIMARY KEY,
+	name VARCHAR(255)
+);
