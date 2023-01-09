@@ -23,3 +23,10 @@ CREATE TABLE authors (
 	first_name VARCHAR(255),
 	last_name VARCHAR(255)
 );
+
+CREATE TABLE music_album (
+	on_spotify Boolean,
+	publish_date DATE
+);
+
+
