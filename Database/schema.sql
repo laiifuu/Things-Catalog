@@ -33,3 +33,9 @@ CREATE TABLE genre (
 	id serial PRIMARY KEY,
 	name VARCHAR(255)
 );
+
+CREATE TABLE movie (
+	id BIGSERIAL PRIMARY KEY,
+	silent Boolen,
+	published_date DATE
+);
