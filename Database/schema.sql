@@ -9,3 +9,11 @@ CREATE TABLE label (
 	title VARCHAR(100),
 	color VARCHAR(100)
 );
+
+CREATE TABLE games (
+	id serial PRIMARY KEY,
+	multiplayer VARCHAR(255),
+	last_played_at: DATE,
+	publish_date DATE,
+	archived Boolean
+);
