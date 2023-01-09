@@ -17,3 +17,9 @@ CREATE TABLE games (
 	publish_date DATE,
 	archived Boolean
 );
+
+CREATE TABLE authors (
+	id serial PRIMARY KEY,
+	first_name VARCHAR(255),
+	last_name VARCHAR(255)
+);
