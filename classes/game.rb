@@ -11,10 +11,6 @@ class Game < Item
   end
 
   def can_be_archived?
-    puts super
-    puts Date.today.year
-    puts @last_played_at.year
-    puts (Date.today.year - @last_played_at.year) >= 10
     super && (Date.today.year - @last_played_at.year) >= 2
   end
 
