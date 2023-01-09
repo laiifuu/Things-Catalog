@@ -29,4 +29,7 @@ CREATE TABLE music_album (
 	publish_date DATE
 );
 
-
+CREATE TABLE genre (
+	id serial PRIMARY KEY,
+	name VARCHAR(255)
+);
