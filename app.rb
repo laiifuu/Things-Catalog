@@ -9,3 +9,17 @@ end
 @label = @label_store.read.map do |label|
   Label.new(label['title'], label['color'])
 end
+
+
+def add_book
+    puts 'Publisher:'
+    publisher = gets.chomp.to_s
+    puts 'Cover state (good/bad):'
+    cover_state = gets.chomp.to_s
+    puts 'Published date [Enter date in this format (yyyy-mm-dd)]:'
+    published_date = gets.chomp.to_s
+    book = Book.new(published_date, publisher, cover_state)
+    @books << book
+    add_label
+    puts 'Book created successfully'
+  end
