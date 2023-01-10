@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def show_options
   puts "Please choose an option by entering a number:\n  1- List all books
   2- List all labels\n  3- List all music albums
