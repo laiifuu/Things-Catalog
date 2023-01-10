@@ -1,7 +1,14 @@
 CREATE TABLE book (
 	id SERIAL PRIMARY KEY,
-	   publisher VARCHAR(100),
-	cover_state VARCHAR(100)
+	publisher VARCHAR(100),
+	cover_state VARCHAR(100),
+    publish_date DATE,
+    archived boolean,
+    genre_id INTEGER REFERENCES Genre(id),
+    author_id INTEGER REFERENCES Author(id),
+    source_id INTEGER REFERENCES Source(id)
+
+
 );
 
 CREATE TABLE label (

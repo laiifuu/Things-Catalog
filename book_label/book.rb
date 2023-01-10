@@ -1,7 +1,7 @@
-require_relative '../item'
+require_relative '../classes/item'
 
 class Book < Item
-  attr_reader :published_date, :publiher, :cover_state
+  attr_reader :published_date, :publisher, :cover_state
 
   def initialize(published_date, publisher, cover_state)
     super(published_date, false)
@@ -16,7 +16,9 @@ end
 def create_json
   super.merge({
 	publisher: @publisher,
-	cover_state; @cover_state
+	cover_state: @cover_state
 	})
   end
 end
+
+book = Book.new('2020-07-03', 'Evans', 'good')

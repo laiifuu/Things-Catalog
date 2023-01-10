@@ -1,8 +1,8 @@
-require_relative '../book_label/book
+require_relative '../book_label/book'
 
 describe Book do
   before :all do
-    @book = Book.new('1998-03-15", 'fantasy', 'good')
+    @book = Book.new('1998-03-15', 'fantasy', 'good')
   end
 
 context 'when creating a new book' do
@@ -20,7 +20,7 @@ it 'should have a publisher' do
 end
 
 it 'should have a published date' do
-  expect(@book.published_date).to eq(1998-03-15')
+  expect(@book.published_date).to eq('1998-03-15')
 end
 
 it 'has can_be_archived? method' do

@@ -1,8 +1,8 @@
-require_relative '.../book_label/label'
+require_relative '../book_label/label'
 
 describe Label do
   before :all do
-    @label = Label.new(The gods are not to be blame', 'ash')
+    @label = Label.new('The gods are not to be blame', 'ash')
 end
 
 context 'when creating a new label' do
@@ -11,10 +11,10 @@ context 'when creating a new label' do
 end
 
 it 'should have a title' do
-  expect(@label.title).to eq(The gods are not to be blame')
+  expect(@label.title).to eq('The gods are not to be blame')
 end
 
-it 'shold have a color' do
+it 'should have a color' do
   expect(@label.color).to eq('ash')
 end
 
