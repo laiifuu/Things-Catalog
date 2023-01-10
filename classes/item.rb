@@ -1,34 +1,38 @@
 require 'date'
 
+# Item class
 class Item
-  def initialize()
-    @id = Random.rand(10_000)
-    @publish_date = Time.now
-    @archived = false
+  attr_reader :publish_date, :archived, :id, :genre, :author, :source, :label
+
+  def initialize(publish_date, archived, id = Random.rand(10_000))
+    @id = id
+    @publish_date = Date.parse(publish_date)
+    @archived = archived
   end
 
-  def genre(genre)
+  def genre=(genre)
     @genre = genre
     genre.add_item(self)
   end
 
-  def author(author)
+  def author=(author)
+    puts author.first_name
     @author = author
-    author.add_item(self)
+    author.add_item(self) unless author.items.include?(self)
   end
 
-  def source(source)
+  def source=(source)
     @source = source
     source.add_item(self)
   end
 
-  def label(label)
+  def label=(label)
     @label = label
     label.add_item(self)
   end
 
   def can_be_archived?
-    puts (Date.today.year - @publish_date.year) > 10
+    Date.today.year - @publish_date.year > 10
   end
 
   private :can_be_archived?
