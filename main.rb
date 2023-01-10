@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'classes_utilities/game_author_utilities'
 
 # Main class
