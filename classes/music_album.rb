@@ -1,8 +1,9 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-  def initilize()
-    @on_spotify = false
+  def initilize(publish_date, archived, id: Random.rand(1..1234), on_spotify: false)
+    super(publish_date, archived, id)
+    @on_spotify = on_spotify
   end
 
   def can_be_archived?
