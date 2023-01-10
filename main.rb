@@ -51,5 +51,3 @@ end
 
 main = Main.new
 main.run
-
-
