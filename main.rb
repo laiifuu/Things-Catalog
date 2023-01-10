@@ -20,7 +20,7 @@ def run
     show_options
     number = gets.to_i
     if number < 11
-      puts 'Number chosen ' + number.to_s
+      puts "Number chosen #{number}"
     elsif number == 11
       exit = true
       puts 'Thanks for using our catalog of things app, see you soon!'

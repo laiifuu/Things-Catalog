@@ -1,28 +1,28 @@
 require 'date'
 
-class Item 
+class Item
   def initialize()
-    @id = Random.rand(10000)
+    @id = Random.rand(10_000)
     @publish_date = Time.now
     @archived = false
   end
 
-  def set_genre(genre)
-    @genre = genre 
+  def genre(genre)
+    @genre = genre
     genre.add_item(self)
   end
 
-  def set_author(author)
+  def author(author)
     @author = author
     author.add_item(self)
   end
 
-  def set_source(source)
+  def source(source)
     @source = source
     source.add_item(self)
   end
 
-  def set_label(label)
+  def label(label)
     @label = label
     label.add_item(self)
   end
@@ -36,8 +36,4 @@ class Item
   def move_to_archive
     @archived = true if can_be_archived?
   end
-  
 end
-
-item = Item.new 
-puts item.move_to_archive
