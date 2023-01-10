@@ -5,8 +5,8 @@ class Main
   include GameAuthorUtilities
 
   def initialize
-    @games = []
-    @authors = []
+    @games = load_games
+    @authors = load_authors
   end
 
   def show_options
@@ -39,6 +39,8 @@ class Main
         pick_action(number)
       elsif number == 10
         exit = true
+        save_games
+        save_authors
         puts 'Thanks for using our catalog of things app, see you soon!'
       else
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"
@@ -49,3 +51,5 @@ end
 
 main = Main.new
 main.run
+
+
