@@ -1,0 +1,47 @@
+require_relative '../classes/book'
+require_relative '../classes/label'
+require 'json'
+# BookLabelUtilities module
+module BookLabelUtilities
+  def save_books
+    return unless File.exist?('./storage_files/books.json')
+    return unless @books.any?
+    books_data = JSON.generate(@books, { max_nesting: false })
+    File.write('./storage_files/books.json', books_data)
+  end
+  def save_labels
+    return unless File.exist?('./storage_files/labels.json')
+    return unless @labels.any?
+    labels_data = JSON.generate(@labels, { max_nesting: false })
+    File.write('./storage_files/labels.json', labels_data)
+  end
+  def load_books
+    books = []
+    if File.exist?('./storage_files/books.json')
+      data = File.read('./storage_files/books.json')
+      if data != ''
+        JSON.parse(data).map do |book|
+          new_book = Book.new(book['publish_date'], book['publisher'], book['cover_state'], book['id'])
+          label = book['label']
+          new_label = Label.new(label['title'], label['color'], label['id'])
+          new_book.label = new_label
+          books.push(new_book)
+        end
+      end
+    end
+    books
+  end
+  def load_labels
+    labels = []
+    if File.exist?('./storage_files/labels.json')
+      data = File.read('./storage_files/labels.json')
+      if data != ''
+        JSON.parse(data).map do |label|
+          new_label = Label.new(label['title'], label['color'], label['id'])
+          labels.push(new_label)
+        end
+      end
+    end
+    labels
+  end
+end
