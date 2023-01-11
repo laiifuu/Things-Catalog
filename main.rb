@@ -1,7 +1,10 @@
 require_relative 'classes_utilities/book_label_utilities'
+require_relative 'classes_utilities/game_author_utilities'
+
 # Main class
 class Main
   include BookLabelUtilities
+  include GameAuthorUtilities
   def initialize
     @games = load_games
     @authors = load_authors
