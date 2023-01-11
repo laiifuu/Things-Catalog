@@ -4,12 +4,13 @@ require 'json'
 # BookLabelUtilities module
 module BookLabelUtilities
   def create_label
-    p "Enter the title: "
+    p 'Enter the title: '
     title = gets.chomp
-    p "Enter the color: "
+    p 'Enter the color: '
     color = gets.chomp
     Label.new(title, color)
   end
+
   def create_book
     p 'When was this book published? (dd-mm-yyyy)'
     publish_date = gets.chomp
@@ -23,6 +24,7 @@ module BookLabelUtilities
     @books.push(book)
     @labels.push(label)
   end
+
   def list_books
     if @books.empty?
       puts 'Books list is empty!'
@@ -34,6 +36,7 @@ module BookLabelUtilities
       end
     end
   end
+
   def list_labels
     if @labels.empty?
       puts 'Labels list is empty!'
@@ -46,18 +49,23 @@ module BookLabelUtilities
       end
     end
   end
+
   def save_books
     return unless File.exist?('./storage_files/books.json')
     return unless @books.any?
+
     books_data = JSON.generate(@books, { max_nesting: false })
     File.write('./storage_files/books.json', books_data)
   end
+
   def save_labels
     return unless File.exist?('./storage_files/labels.json')
     return unless @labels.any?
+
     labels_data = JSON.generate(@labels, { max_nesting: false })
     File.write('./storage_files/labels.json', labels_data)
   end
+
   def load_books
     books = []
     if File.exist?('./storage_files/books.json')
@@ -74,6 +82,7 @@ module BookLabelUtilities
     end
     books
   end
+
   def load_labels
     labels = []
     if File.exist?('./storage_files/labels.json')

@@ -5,7 +5,8 @@ class Main
   def initialize
     @books = load_books
     @labels = load_labels
-    end
+  end
+
   def show_options
     puts "Please choose an option by entering a number:
     1- List all books
@@ -14,6 +15,7 @@ class Main
     7- Add a book\n    8- Add a music album
     9- Add a game\n    10- Exit"
   end
+
   def pick_action(number)
     case number
     when 1
@@ -24,6 +26,7 @@ class Main
       create_book
     end
   end
+
   def run
     puts 'Welcome to your catalog of things!'
     exit = false
