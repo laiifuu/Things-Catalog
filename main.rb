@@ -1,10 +1,11 @@
-require_relative 'classes_utilities/game_author_utilities'
-
+require_relative 'classes_utilities/book_label_utilities'
 # Main class
 class Main
+  include BookLabelUtilities
   include GameAuthorUtilities
-
   def initialize
+    @books = load_books
+    @labels = load_labels
     @games = load_games
     @authors = load_authors
   end
@@ -20,6 +21,12 @@ class Main
 
   def pick_action(number)
     case number
+    when 1
+      list_books
+    when 2
+      list_labels
+    when 7
+      create_book
     when 4
       list_games
     when 5
