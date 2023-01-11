@@ -1,7 +1,7 @@
 class Label
-    attr_reader :id, :items, :title, :color
-  
-    def initialize(title, color, id = Random.rand(10_000))
+  attr_reader :id, :items, :title, :color
+
+  def initialize(title, color, id = Random.rand(10_000))
     @id = id
     @items = []
     @title = title
@@ -12,5 +12,4 @@ class Label
     @items << item
     item.label = self
   end
-
 end
