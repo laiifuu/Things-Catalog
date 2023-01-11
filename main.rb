@@ -48,11 +48,8 @@ class Main
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"
       end
     end
-    
   end
 end
 
 main = Main.new
 main.run
-
-
