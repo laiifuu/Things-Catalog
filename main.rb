@@ -24,6 +24,12 @@ class Main
       list_labels
     when 7
       create_book
+    when 4
+      list_games
+    when 5
+      list_authors
+    when 9
+      create_game
     end
   end
 
@@ -37,14 +43,16 @@ class Main
         pick_action(number)
       elsif number == 10
         exit = true
-        save_books
-        save_labels
         puts 'Thanks for using our catalog of things app, see you soon!'
       else
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"
       end
     end
+    
   end
 end
+
 main = Main.new
 main.run
+
+
