@@ -1,46 +1,19 @@
 CREATE TABLE book (
-	id SERIAL PRIMARY KEY,
-	   publisher VARCHAR(100),
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	publisher VARCHAR(100),
 	cover_state VARCHAR(100)
+	publish_date  DATE
+	archived Boolean
+	genre_id INT REFERENCES genre(id),
+  	author_id INT REFERENCES author(id),
+  	source_id INT REFERENCES source(id), 
+  	label_id INT REFERENCES label(id),
+
 );
+
 
 CREATE TABLE label (
- 	id SERIAL PRIMARY KEY,
+ 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	title VARCHAR(100),
 	color VARCHAR(100)
-);
-
-CREATE TABLE games (
-	id serial PRIMARY KEY,
-	multiplayer VARCHAR(255),
-	last_played_at: DATE,
-	publish_date DATE,
-	archived Boolean
-);
-
-CREATE TABLE authors (
-	id serial PRIMARY KEY,
-	first_name VARCHAR(255),
-	last_name VARCHAR(255)
-);
-
-CREATE TABLE music_album (
-	on_spotify Boolean,
-	publish_date DATE
-);
-
-CREATE TABLE genre (
-	id serial PRIMARY KEY,
-	name VARCHAR(255)
-);
-
-CREATE TABLE movie (
-	id BIGSERIAL PRIMARY KEY,
-	silent Boolen,
-	published_date DATE
-);
-
-CREATE TABLE source (
-	id BIGSERIAL PRIMARY KEY,
-	name VARCHAR(255)
 );
