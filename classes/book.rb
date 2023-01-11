@@ -7,9 +7,9 @@ class Book < Item
     super(published_date, false, id)
     @publisher = publisher
     @cover_state = cover_state
-end
+  end
 
-def can_be_archived?
+  def can_be_archived?
     super || cover_state == 'bad'
   end
 end
