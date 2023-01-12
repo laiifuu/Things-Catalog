@@ -32,10 +32,10 @@ module GameAuthorUtilities
       puts 'Games list is empty!'
     else
       @games.each_with_index do |game, index|
-        puts "#{index})-  ID: #{game.id}"
-        puts "  Last_palyed: #{game.last_played_at}"
-        puts "  Multiplayer: #{game.multiplayer}"
-        puts "  Author: #{game.author.first_name} #{game.author.last_name}"
+        puts "#{index}) ID: #{game.id}
+        Last_palyed: #{game.last_played_at}
+        Multiplayer: #{game.multiplayer}
+        Author: #{game.author.first_name} #{game.author.last_name}"
       end
     end
   end
@@ -45,10 +45,7 @@ module GameAuthorUtilities
       puts 'Authors list is empty!'
     else
       @authors.each_with_index do |author, index|
-        puts "#{index})-  ID: #{author.id}"
-        puts "  First name: #{author.first_name}"
-        puts "  Last name: #{author.last_name}"
-        puts "\n"
+        puts "#{index})ID: #{author.id}, First name: #{author.first_name}, Last name: #{author.last_name}\n"
       end
     end
   end

@@ -30,9 +30,9 @@ module BookLabelUtilities
       puts 'Books list is empty!'
     else
       @books.each_with_index do |book, index|
-        puts "#{index})-ID: #{book.id}"
-        puts "  Publication date: #{book.publish_date}"
-        puts "  Cover state: #{book.cover_state}"
+        puts "#{index}) ID: #{book.id}
+        Publication date: #{book.publish_date}
+        Cover state: #{book.cover_state}"
       end
     end
   end
@@ -42,10 +42,8 @@ module BookLabelUtilities
       puts 'Labels list is empty!'
     else
       @labels.each_with_index do |label, index|
-        puts "#{index})-ID: #{label.id}"
-        puts "  Title: #{label.title}"
-        puts "  Color: #{label.color}"
-        puts "\n"
+        puts "#{index}) ID: #{label.id}, Label: #{label.title}, Color: #{label.color}
+        \n"
       end
     end
   end
