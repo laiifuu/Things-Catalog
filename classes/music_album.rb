@@ -13,4 +13,14 @@ class MusicAlbum < Item
   end
 
   private :can_be_archived?
+
+  def to_json(*args)
+    {
+      'id' => @id,
+      'publish_date' => @publish_date,
+      'archived' => @archived,
+      'on_spotify' => @on_spotify,
+      'genre' => @genre
+    }.to_json(*args)
+  end
 end

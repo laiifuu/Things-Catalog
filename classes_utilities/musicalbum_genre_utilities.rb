@@ -1,5 +1,6 @@
 require_relative '../classes/music_album'
 require_relative '../classes/genre'
+require 'json'
 
 module MusicAlbumGenreUtilities
   def create_genre
@@ -27,7 +28,7 @@ module MusicAlbumGenreUtilities
       puts 'No Music Album Created!'
     else
       @music_album.each_with_index do |each_album, index|
-        puts "#{index}) Book ID: #{each_album.id}
+        puts "#{index}) Album ID: #{each_album.id}
         Published Date: #{each_album.publish_date}
         Archived : #{each_album.archived}
         On Spotify: #{each_album.on_spotify}"
@@ -42,6 +43,17 @@ module MusicAlbumGenreUtilities
       @genre.each_with_index do |each_genre, index|
         puts "#{index}) Genre ID: #{each_genre.id} \n Genre Name: #{each_genre.name}"
       end
+    end
+  end
+
+  def preserve_music_album
+    return unless @music_album.any?
+
+    album_data = JSON.generate(@music_album, { max_nesting: false })
+    if File.exist?('./storage_files/musicAlbum.json')
+      File.write('./storage_files/musicAlbum.json', album_data)
+    else
+      File.write('./storage_files/musicAlbum.json', album_data, mode: 'w+')
     end
   end
 end
