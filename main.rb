@@ -33,12 +33,14 @@ class Main
       list_labels
     when 3
       list_music_album
-    when 7
-      create_book
     when 4
       list_games
     when 5
       list_authors
+    when 6
+      list_genre
+    when 7
+      create_book
     when 8
       create_music_album
     when 9

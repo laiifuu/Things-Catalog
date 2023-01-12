@@ -26,11 +26,21 @@ module MusicAlbumGenreUtilities
     if @music_album.empty?
       puts 'No Music Album Created!'
     else
-      @music_album.each_with_index do |album, index|
-        puts "#{index}) Book ID: #{album.id}
-        Published Date: #{album.publish_date}
-        Archived : #{album.archived}
-        On Spotify: #{album.on_spotify}"
+      @music_album.each_with_index do |each_album, index|
+        puts "#{index}) Book ID: #{each_album.id}
+        Published Date: #{each_album.publish_date}
+        Archived : #{each_album.archived}
+        On Spotify: #{each_album.on_spotify}"
+      end
+    end
+  end
+
+  def list_genre
+    if @genre.empty?
+      puts 'No Genre for any Music Album Created!'
+    else
+      @genre.each_with_index do |each_genre, index|
+        puts "#{index}) Genre ID: #{each_genre.id} \n Genre Name: #{each_genre.name}"
       end
     end
   end
