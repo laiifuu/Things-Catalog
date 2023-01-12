@@ -14,7 +14,6 @@ class Author
   def add_item(item)
     @items.push(item) unless @items.include?(item)
     item.author = self
-    item.author = self
   end
 
   def to_json(*args)
