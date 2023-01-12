@@ -1,10 +1,12 @@
 require_relative 'classes_utilities/book_label_utilities'
 require_relative 'classes_utilities/game_author_utilities'
+require_relative 'classes_utilities/musicalbum_genre_utilities'
 
 # Main class
 class Main
   include BookLabelUtilities
   include GameAuthorUtilities
+  include MusicAlbumGenreUtilities
   def initialize
     @books = load_books
     @labels = load_labels
@@ -35,6 +37,8 @@ class Main
       list_games
     when 5
       list_authors
+    when 8
+      create_music_album
     when 9
       create_game
     end
