@@ -4,26 +4,18 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
-
   DisplayCopNames: true
-
 Layout/LineLength:
   Max: 120
-Layout/EndOfLine:
-  EnforcedStyle: lf
 Metrics/MethodLength:
-  Max: 30
+  Max: 20
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
-  Max: 200
+  Max: 150
 Metrics/BlockLength:
-  AllowedMethods: ['describe']
+  IgnoredMethods: ['describe']
   Max: 30
-Metrics/CyclomaticComplexity:
-  Enabled: false 
-
-
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -36,7 +28,6 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
