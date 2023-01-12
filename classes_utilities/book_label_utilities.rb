@@ -4,7 +4,7 @@ require 'json'
 # BookLabelUtilities module
 module BookLabelUtilities
   def create_label
-    p 'Enter the title: '
+    p "Enter the label\'s title: "
     title = gets.chomp
     p 'Enter the color: '
     color = gets.chomp

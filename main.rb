@@ -13,8 +13,8 @@ class Main
     @labels = load_labels
     @games = load_games
     @authors = load_authors
-    @genre = load_genre
-    @music_album = load_music_album
+    @genre = load_genre || []
+    @music_album = load_music_album || []
   end
 
   def show_options
@@ -58,7 +58,7 @@ class Main
     if number <= 6
       list_items(number)
     else
-      add_item(number)
+      add_items(number)
     end
   end
 
