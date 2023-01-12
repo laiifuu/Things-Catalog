@@ -5,6 +5,8 @@ class Main
   def initialize
     @books = load_books
     @labels = load_labels
+    @genre = []
+    @music_album = []
   end
 
   def show_options
