@@ -56,4 +56,15 @@ module MusicAlbumGenreUtilities
       File.write('./storage_files/musicAlbum.json', album_data, mode: 'w+')
     end
   end
+
+  def preserve_genre
+    return unless @genre.any?
+
+    genre_data = JSON.generate(@genre, { max_nesting: false })
+    if File.exist?('./storage_files/genre.json')
+      File.write('./storage_files/genre.json', genre_data)
+    else
+      File.write('./storage_files/genre.json', genre_data, mode: 'w+')
+    end
+  end
 end

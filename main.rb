@@ -64,6 +64,7 @@ class Main
         save_games
         save_authors
         preserve_music_album
+        preserve_genre
         puts 'Thanks for using our catalog of things app, see you soon!'
       else
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"
