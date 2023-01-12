@@ -74,7 +74,7 @@ module MusicAlbumGenreUtilities
     return unless File.exist?('./storage_files/musicAlbum.json')
 
     album_data = File.read('./storage_files/musicAlbum.json')
-    @music_album = [*JSON.parse(album_data)] 
+    @music_album = [*JSON.parse(album_data)]
   end
 
   def load_genre
