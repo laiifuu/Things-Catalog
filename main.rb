@@ -1,18 +1,17 @@
 require_relative 'classes_utilities/book_label_utilities'
 require_relative 'classes_utilities/game_author_utilities'
+require_relative 'classes_utilities/musicalbum_genre_utilities'
 
 # Main class
 class Main
   include BookLabelUtilities
   include GameAuthorUtilities
-  include GameAuthorUtilities
+  include MusicAlbumGenreUtilities
   def initialize
     @books = load_books
     @labels = load_labels
     @games = load_games
     @authors = load_authors
-    @books = load_books
-    @labels = load_labels
     @genre = []
     @music_album = []
   end
@@ -26,22 +25,31 @@ class Main
     9- Add a game\n    10- Exit"
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def pick_action(number)
     case number
     when 1
       list_books
     when 2
       list_labels
-    when 7
-      create_book
+    when 3
+      list_music_album
     when 4
       list_games
     when 5
       list_authors
+    when 6
+      list_genre
+    when 7
+      create_book
+    when 8
+      create_music_album
     when 9
       create_game
     end
   end
+
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def run
     puts 'Welcome to your catalog of things!'
