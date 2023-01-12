@@ -1,8 +1,13 @@
 require_relative 'classes_utilities/book_label_utilities'
+require_relative 'classes_utilities/game_author_utilities'
+
 # Main class
 class Main
   include BookLabelUtilities
+  include GameAuthorUtilities
   def initialize
+    @games = load_games
+    @authors = load_authors
     @books = load_books
     @labels = load_labels
     @genre = []
@@ -45,6 +50,8 @@ class Main
         pick_action(number)
       elsif number == 10
         exit = true
+        save_games
+        save_authors
         puts 'Thanks for using our catalog of things app, see you soon!'
       else
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"

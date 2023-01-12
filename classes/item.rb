@@ -16,7 +16,6 @@ class Item
   end
 
   def author=(author)
-    puts author.first_name
     @author = author
     author.add_item(self) unless author.items.include?(self)
   end

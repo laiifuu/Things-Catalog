@@ -1,5 +1,6 @@
 require_relative '../classes/game'
 require_relative '../classes/author'
+require 'json'
 
 # GameAuthorUtilities module
 module GameAuthorUtilities
@@ -50,5 +51,53 @@ module GameAuthorUtilities
         puts "\n"
       end
     end
+  end
+
+  def save_games
+    return unless File.exist?('./storage_files/games.json')
+    return unless @games.any?
+
+    games_data = JSON.generate(@games, { max_nesting: false })
+    File.write('./storage_files/games.json', games_data)
+  end
+
+  def save_authors
+    return unless File.exist?('./storage_files/authors.json')
+    return unless @authors.any?
+
+    authors_data = JSON.generate(@authors, { max_nesting: false })
+    File.write('./storage_files/authors.json', authors_data)
+  end
+
+  def load_games
+    games = []
+    if File.exist?('./storage_files/games.json')
+      data = File.read('./storage_files/games.json')
+      if data != ''
+        JSON.parse(data).map do |game|
+          new_game = Game.new(game['publish_date'], game['archived'], game['multiplayer'], game['last_played_at'],
+                              game['id'])
+          author = game['author']
+          new_author = Author.new(author['first_name'], author['last_name'], author['id'])
+          new_game.author = new_author
+          games.push(new_game)
+        end
+      end
+    end
+    games
+  end
+
+  def load_authors
+    authors = []
+    if File.exist?('./storage_files/authors.json')
+      data = File.read('./storage_files/authors.json')
+      if data != ''
+        JSON.parse(data).map do |author|
+          new_author = Author.new(author['first_name'], author['last_name'], author['id'])
+          authors.push(new_author)
+        end
+      end
+    end
+    authors
   end
 end
