@@ -25,6 +25,7 @@ class Main
     9- Add a game\n    10- Exit"
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def pick_action(number)
     case number
     when 1
@@ -47,6 +48,8 @@ class Main
       create_game
     end
   end
+
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def run
     puts 'Welcome to your catalog of things!'
