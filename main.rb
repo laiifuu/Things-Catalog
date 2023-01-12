@@ -7,6 +7,7 @@ class Main
   include BookLabelUtilities
   include GameAuthorUtilities
   include MusicAlbumGenreUtilities
+
   def initialize
     @books = load_books
     @labels = load_labels
@@ -25,8 +26,7 @@ class Main
     9- Add a game\n    10- Exit"
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  def pick_action(number)
+  def list_items(number)
     case number
     when 1
       list_books
@@ -40,6 +40,11 @@ class Main
       list_authors
     when 6
       list_genre
+    end
+  end
+
+  def add_items(number)
+    case number
     when 7
       create_book
     when 8
@@ -49,7 +54,22 @@ class Main
     end
   end
 
-  # rubocop:enable Metrics/CyclomaticComplexity
+  def pick_action(number)
+    if number <= 6
+      list_items(number)
+    else
+      add_item(number)
+    end
+  end
+
+  def save_data
+    save_games
+    save_authors
+    preserve_music_album
+    preserve_genre
+    save_books
+    save_labels
+  end
 
   def run
     puts 'Welcome to your catalog of things!'
@@ -61,10 +81,7 @@ class Main
         pick_action(number)
       elsif number == 10
         exit = true
-        save_games
-        save_authors
-        preserve_music_album
-        preserve_genre
+        save_data
         puts 'Thanks for using our catalog of things app, see you soon!'
       else
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"

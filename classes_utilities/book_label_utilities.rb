@@ -23,6 +23,7 @@ module BookLabelUtilities
     label.add_item(book)
     @books.push(book)
     @labels.push(label)
+    puts "Book has been created successfully!\n"
   end
 
   def list_books
@@ -49,24 +50,24 @@ module BookLabelUtilities
   end
 
   def save_books
-    if @books.any? 
-      books_data = JSON.generate(@books, { max_nesting: false })
-      if File.exist?('./storage_files/books.json')
-        File.write('./storage_files/books.json', books_data)
-      else
-        File.write('./storage_files/books.json', books_data, mode: "w+")
-      end
+    return unless @books.any?
+
+    books_data = JSON.generate(@books, { max_nesting: false })
+    if File.exist?('./storage_files/books.json')
+      File.write('./storage_files/books.json', books_data)
+    else
+      File.write('./storage_files/books.json', books_data, mode: 'w+')
     end
   end
 
   def save_labels
-    if @labels.any? 
-      labels_data = JSON.generate(@labels, { max_nesting: false })
-      if File.exist?('./storage_files/labels.json')
-        File.write('./storage_files/labels.json', labels_data)
-      else
-        File.write('./storage_files/labels.json', labels_data, mode: "w+")
-      end
+    return unless @labels.any?
+
+    labels_data = JSON.generate(@labels, { max_nesting: false })
+    if File.exist?('./storage_files/labels.json')
+      File.write('./storage_files/labels.json', labels_data)
+    else
+      File.write('./storage_files/labels.json', labels_data, mode: 'w+')
     end
   end
 

@@ -20,7 +20,7 @@ module MusicAlbumGenreUtilities
     genre.add_item(new_album)
     @music_album.push(new_album)
     @genre.push(genre)
-    p 'Your Music Album has been created Successfully'
+    p "Your Music Album has been created Successfully!\n"
   end
 
   def list_music_album

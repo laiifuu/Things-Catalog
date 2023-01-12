@@ -25,6 +25,7 @@ module GameAuthorUtilities
     author.add_item(game)
     @games.push(game)
     @authors.push(author)
+    puts "Game has been created successfully!\n"
   end
 
   def list_games
@@ -50,25 +51,25 @@ module GameAuthorUtilities
     end
   end
 
-  def save_games 
-    if @games.any? 
-      games_data = JSON.generate(@games, { max_nesting: false })
-      if File.exist?('./storage_files/games.json')
-        File.write('./storage_files/games.json', games_data)
-      else
-        File.write('./storage_files/games.json', games_data, mode: "w+")
-      end
+  def save_games
+    return unless @games.any?
+
+    games_data = JSON.generate(@games, { max_nesting: false })
+    if File.exist?('./storage_files/games.json')
+      File.write('./storage_files/games.json', games_data)
+    else
+      File.write('./storage_files/games.json', games_data, mode: 'w+')
     end
   end
 
   def save_authors
-    if @authors.any? 
-      authors_data = JSON.generate(@authors, { max_nesting: false })
-      if File.exist?('./storage_files/authors.json')
-        File.write('./storage_files/authors.json', authors_data)
-      else
-        File.write('./storage_files/authors.json', authors_data, mode: "w+")
-      end
+    return unless @authors.any?
+
+    authors_data = JSON.generate(@authors, { max_nesting: false })
+    if File.exist?('./storage_files/authors.json')
+      File.write('./storage_files/authors.json', authors_data)
+    else
+      File.write('./storage_files/authors.json', authors_data, mode: 'w+')
     end
   end
 
