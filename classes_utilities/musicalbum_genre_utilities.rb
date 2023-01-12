@@ -19,5 +19,19 @@ module MusicAlbumGenreUtilities
     genre.add_item(new_album)
     @music_album.push(new_album)
     @genre.push(genre)
+    p 'Your Music Album has been created Successfully'
+  end
+
+  def list_music_album
+    if @music_album.empty?
+      puts 'No Music Album Created!'
+    else
+      @music_album.each_with_index do |album, index|
+        puts "#{index}) Book ID: #{album.id}
+        Published Date: #{album.publish_date}
+        Archived : #{album.archived}
+        On Spotify: #{album.on_spotify}"
+      end
+    end
   end
 end

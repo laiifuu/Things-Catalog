@@ -31,6 +31,8 @@ class Main
       list_books
     when 2
       list_labels
+    when 3
+      list_music_album
     when 7
       create_book
     when 4
