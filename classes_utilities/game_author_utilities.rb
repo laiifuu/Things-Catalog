@@ -53,20 +53,26 @@ module GameAuthorUtilities
     end
   end
 
-  def save_games
-    return unless File.exist?('./storage_files/games.json')
-    return unless @games.any?
-
-    games_data = JSON.generate(@games, { max_nesting: false })
-    File.write('./storage_files/games.json', games_data)
+  def save_games 
+    if @games.any? 
+      games_data = JSON.generate(@games, { max_nesting: false })
+      if File.exist?('./storage_files/games.json')
+        File.write('./storage_files/games.json', games_data)
+      else
+        File.write('./storage_files/games.json', games_data, mode: "w+")
+      end
+    end
   end
 
   def save_authors
-    return unless File.exist?('./storage_files/authors.json')
-    return unless @authors.any?
-
-    authors_data = JSON.generate(@authors, { max_nesting: false })
-    File.write('./storage_files/authors.json', authors_data)
+    if @authors.any? 
+      authors_data = JSON.generate(@authors, { max_nesting: false })
+      if File.exist?('./storage_files/authors.json')
+        File.write('./storage_files/authors.json', authors_data)
+      else
+        File.write('./storage_files/authors.json', authors_data, mode: "w+")
+      end
+    end
   end
 
   def load_games

@@ -63,6 +63,8 @@ class Main
         exit = true
         save_games
         save_authors
+        save_books
+        save_labels
         puts 'Thanks for using our catalog of things app, see you soon!'
       else
         puts "Error friend, wrong input. Sorry I don't make the rules ¯\\(ツ)/¯"

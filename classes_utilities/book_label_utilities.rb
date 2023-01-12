@@ -51,19 +51,25 @@ module BookLabelUtilities
   end
 
   def save_books
-    return unless File.exist?('./storage_files/books.json')
-    return unless @books.any?
-
-    books_data = JSON.generate(@books, { max_nesting: false })
-    File.write('./storage_files/books.json', books_data)
+    if @books.any? 
+      books_data = JSON.generate(@books, { max_nesting: false })
+      if File.exist?('./storage_files/books.json')
+        File.write('./storage_files/books.json', books_data)
+      else
+        File.write('./storage_files/books.json', books_data, mode: "w+")
+      end
+    end
   end
 
   def save_labels
-    return unless File.exist?('./storage_files/labels.json')
-    return unless @labels.any?
-
-    labels_data = JSON.generate(@labels, { max_nesting: false })
-    File.write('./storage_files/labels.json', labels_data)
+    if @labels.any? 
+      labels_data = JSON.generate(@labels, { max_nesting: false })
+      if File.exist?('./storage_files/labels.json')
+        File.write('./storage_files/labels.json', labels_data)
+      else
+        File.write('./storage_files/labels.json', labels_data, mode: "w+")
+      end
+    end
   end
 
   def load_books
