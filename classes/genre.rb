@@ -1,10 +1,7 @@
-require_relative 'item'
-
-class Genre < Item
+class Genre
   attr_accessor :items
 
-  def initialize(name, publish_date, archived)
-    super(publish_date, archived)
+  def initialize(name)
     @id = Random.rand(1..1234)
     @name = name
     @items = []
