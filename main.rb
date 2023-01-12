@@ -12,8 +12,8 @@ class Main
     @labels = load_labels
     @games = load_games
     @authors = load_authors
-    @genre = []
-    @music_album = []
+    @genre = load_genre
+    @music_album = load_music_album
   end
 
   def show_options
