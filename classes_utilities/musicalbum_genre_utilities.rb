@@ -20,7 +20,7 @@ module MusicAlbumGenreUtilities
     genre.add_item(new_album)
     @music_album.push(new_album)
     @genre.push(genre)
-    p "Your Music Album has been created Successfully!\n"
+    p 'Your Music Album has been created Successfully!'
   end
 
   def list_music_album
@@ -28,10 +28,10 @@ module MusicAlbumGenreUtilities
       puts 'No Music Album Created!'
     else
       @music_album.each_with_index do |each_album, index|
-        puts "#{index}) Album ID: #{each_album['id']}
-        Published Date: #{each_album['publish_date']}
-        Archived : #{each_album['archived']}
-        On Spotify: #{each_album['on_spotify']}"
+        puts "#{index}) Album ID: #{each_album.id}
+        Published Date: #{each_album.publish_date}
+        Archived : #{each_album.archived}
+        On Spotify: #{each_album.on_spotify}"
       end
     end
   end
@@ -41,7 +41,7 @@ module MusicAlbumGenreUtilities
       puts 'No Genre for any Music Album Created!'
     else
       @genre.each_with_index do |each_genre, index|
-        puts "#{index}) Genre ID: #{each_genre['id']} \n Genre Name: #{each_genre['name']}"
+        puts "#{index}) Genre ID: #{each_genre.id} \n Genre Name: #{each_genre.name}"
       end
     end
   end
@@ -74,7 +74,11 @@ module MusicAlbumGenreUtilities
     return unless File.exist?('./storage_files/musicAlbum.json')
 
     album_data = File.read('./storage_files/musicAlbum.json')
-    @music_album = [*JSON.parse(album_data)]
+    JSON.parse(album_data).map do |each_album|
+      new_album = MusicAlbum.new(each_album['publish_date'], each_album['archived'], each_album['id'])
+      @music_album.push(new_album)
+    end
+    @music_album
   end
 
   def load_genre
@@ -83,6 +87,10 @@ module MusicAlbumGenreUtilities
     return unless File.exist?('./storage_files/genre.json')
 
     genre_data = File.read('./storage_files/genre.json')
-    @genre = [*JSON.parse(genre_data)]
+    JSON.parse(genre_data).map do |each_genre|
+      new_genre = Genre.new(each_genre['name'], each_genre['id'])
+      @genre.push(new_genre)
+    end
+    @genre
   end
 end
